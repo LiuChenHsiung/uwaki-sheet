@@ -322,8 +322,8 @@
       const x = 120 + k * 330;
       g.fillStyle = k === 0 ? '#ff33c4' : k === 1 ? '#ffc2ec' : '#e4e5e8'; g.fillRect(x, 530, 300, 170);
       g.strokeStyle = '#ff33c4'; g.lineWidth = 6; g.strokeRect(x, 530, 300, 170);
-      canvasText(g, n, x + 150, 550, 280, 96, { weight: 900, color: k === 0 ? 'white' : '#ff33c4', align: 'center' });
-      canvasText(g, `${circles[k]} ${u.shortLabels[k]}`, x + 150, 658, 280, 25, { weight: 900, color: k === 0 ? 'white' : '#ff33c4', align: 'center' });
+      canvasText(g, n, x + 150, 543, 280, 96, { weight: 900, color: k === 0 ? 'white' : '#ff33c4', align: 'center' });
+      canvasText(g, `${circles[k]} ${u.shortLabels[k]}`, x + 150, 656, 280, 25, { weight: 900, color: k === 0 ? 'white' : '#ff33c4', align: 'center' });
     });
     for (let i = 0; i < 40; i++) {
       const x = 187 + i % 10 * 84;
@@ -332,7 +332,7 @@
       g.fillStyle = a === 1 ? '#ff33c4' : a === 2 ? '#ffc2ec' : '#e4e5e8'; g.fillRect(x, y, 70, 70);
       g.strokeStyle = '#ff33c4'; g.lineWidth = 6;
       if (a !== 1) g.strokeRect(x + 3, y + 3, 64, 64);
-      canvasText(g, pad(i + 1), x + 35, y + 24, 60, 24, { weight: 900, color: a === 1 ? 'white' : '#d61fa3', align: 'center' });
+      canvasText(g, pad(i + 1), x + 35, y + 22, 60, 24, { weight: 900, color: a === 1 ? 'white' : '#d61fa3', align: 'center' });
     }
     line(g, 150, 1110, 1050, 1110, '#ff33c4', 4);
     canvasText(g, `${u.reflectionLabel} → ${s.reflection ? u.yesShort : u.noShort}`, 600, 1125, 980, 25, { color: '#4a2140', align: 'center' });
