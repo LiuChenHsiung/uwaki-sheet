@@ -85,7 +85,7 @@
     const type = D.types[C.resultIndex(state)][state.lang];
     const counts = C.counts(state);
     const text = shareText();
-    return `<div class="result-content"><p class="lead result-lead">${u.resultKicker}</p><h2 id="view-heading" tabindex="-1" class="res-type">${type.name}</h2><p class="res-desc">${type.desc}</p><div class="counts">${counts.map((n, i) => `<div class="count ${i === 0 ? 'c1' : i === 1 ? 'c2' : ''}"><b>${n}</b><small>${circles[i]} ${u.shortLabels[i]}</small></div>`).join('')}</div><img class="card-img" id="card-image" alt="${u.resultAlt}" width="1200" height="1200"><div class="actions"><button id="export-summary" class="btn solid">${u.export}</button><button type="button" id="result-action-x" class="btn solid">𝕏 ${u.post}</button><button type="button" id="result-action-f" class="btn solid" data-platform-share aria-disabled="true">${u.postFacebook}</button><a id="share-instagram" class="btn solid" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" data-platform-share aria-disabled="true">${u.postInstagram}</a><p class="platform-share-status" id="platform-share-status" role="status" hidden></p><button id="copy-result" class="link">${u.copy}</button></div><textarea id="share-text" class="share-text" aria-label="${u.shareText}">${esc(text)}</textarea><details class="export-details"><summary>${u.exportSheet}</summary><div class="export-pages">${D.groups.map((g, k) => `<div class="export-page"><img id="preview-${k}" alt="${u.savePreview} · ${format(u.sheetPage, { n: k + 1 })}" width="1500" height="2000"><button class="link" data-download="${k}">${format(u.download, { n: k + 1 })}</button></div>`).join('')}</div></details><details class="answers-details"><summary>${u.allAnswers}</summary><ol class="alist">${state.answers.map((a, i) => `<li><span class="n">${pad(i + 1)}.</span><span class="t">${esc(q(i))}</span><button class="a k${a}" data-jump="${i}" aria-label="${u.edit} ${pad(i + 1)}">${circles[a - 1]}</button></li>`).join('')}</ol></details><div class="nav"><button class="link" id="edit">← ${u.edit}</button><button class="link" id="reset">${u.reset}</button></div></div>`;
+    return `<div class="result-content"><p class="lead result-lead">${u.resultKicker}</p><h2 id="view-heading" tabindex="-1" class="res-type">${type.name}</h2><p class="res-desc">${type.desc}</p><div class="counts">${counts.map((n, i) => `<div class="count ${i === 0 ? 'c1' : i === 1 ? 'c2' : ''}"><b>${n}</b><small>${circles[i]} ${u.shortLabels[i]}</small></div>`).join('')}</div><img class="card-img" id="card-image" alt="${u.resultAlt}" width="1200" height="1200"><div class="actions"><button id="export-summary" class="btn solid">${u.export}</button><button type="button" id="result-action-x" class="btn solid">𝕏 ${u.post}</button><button type="button" id="result-action-f" class="btn solid" data-platform-share aria-disabled="true">${u.postFacebook}</button><a id="share-instagram" class="btn solid" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" data-platform-share aria-disabled="true">${u.postInstagram}</a><p class="platform-share-status" id="platform-share-status" role="status" hidden></p><button id="copy-result" class="link">${u.copy}</button></div><textarea id="result-text" class="result-text" aria-label="${u.shareText}">${esc(text)}</textarea><details class="export-details"><summary>${u.exportSheet}</summary><div class="export-pages">${D.groups.map((g, k) => `<div class="export-page"><img id="preview-${k}" alt="${u.savePreview} · ${format(u.sheetPage, { n: k + 1 })}" width="1500" height="2000"><button class="link" data-download="${k}">${format(u.download, { n: k + 1 })}</button></div>`).join('')}</div></details><details class="answers-details"><summary>${u.allAnswers}</summary><ol class="alist">${state.answers.map((a, i) => `<li><span class="n">${pad(i + 1)}.</span><span class="t">${esc(q(i))}</span><button class="a k${a}" data-jump="${i}" aria-label="${u.edit} ${pad(i + 1)}">${circles[a - 1]}</button></li>`).join('')}</ol></details><div class="nav"><button class="link" id="edit">← ${u.edit}</button><button class="link" id="reset">${u.reset}</button></div></div>`;
   }
   function footer() {
     const u = t();
@@ -209,7 +209,7 @@
     return [u.shareText, `【${type.name}】`, ...C.counts(state).map((n, i) => format(u.shareCount, { label: u.labels[i], n })), `${u.reflectionLabel}${state.reflection ? u.yesShort : u.noShort}`, u.footerLine, url.protocol.startsWith('http') ? url.href : 'https://liuchenhsiung.github.io/uwaki-sheet/'].join('\n');
   }
   async function copyResult() {
-    const textarea = document.getElementById('share-text');
+    const textarea = document.getElementById('result-text');
     try { await navigator.clipboard.writeText(textarea.value); toast(t().copied); }
     catch { textarea.focus(); textarea.select(); toast(t().copyFailed); }
   }
@@ -220,7 +220,7 @@
       return;
     }
     const u = t();
-    const textarea = document.getElementById('share-text');
+    const textarea = document.getElementById('result-text');
     const status = document.getElementById('platform-share-status');
     // Start clipboard access while this page still has focus.
     // The platform opens synchronously from the click or anchor navigation.
