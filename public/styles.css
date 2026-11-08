@@ -75,6 +75,7 @@ details summary{color:var(--ink);font-weight:900;cursor:pointer}
 .alist .t{flex:1;min-width:0}
 .alist .a{flex:0 0 auto;font-weight:900;color:var(--ink);font-size:12px;border:2px solid var(--ink);padding:0 6px;border-radius:3px}
 .alist .a.k1{background:var(--ink);color:var(--white)}
+.alist .a.k2{background:var(--ink-soft)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @keyframes pop{from{transform:translateY(6px);opacity:.4}to{transform:none;opacity:1}}
 .qwrap{display:flex;flex-direction:column;gap:14px;animation:pop .18s ease-out}
@@ -119,6 +120,7 @@ html[lang=zh-TW] h1,html[lang=zh-TW] .res-type{font-weight:900}
 .export-page .link{display:block;margin:7px auto 0;font-size:14px}
 .alist button.a{font:inherit;cursor:pointer;background:transparent;color:var(--ink)}
 .alist button.a.k1{background:var(--ink);color:var(--white)}
+.alist button.a.k2{background:var(--ink-soft)}
 .result-text{display:block}
 .credit{margin:0}
 .skip-link{position:fixed;top:-100px;left:10px;background:var(--ink);color:var(--white);padding:12px;z-index:30}
