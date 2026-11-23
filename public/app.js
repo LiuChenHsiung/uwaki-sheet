@@ -206,7 +206,7 @@
     const url = new URL(location.href);
     url.search = `?lang=${state.lang}`;
     url.hash = '';
-    return [u.shareText, `【${type.name}】`, ...C.counts(state).map((n, i) => format(u.shareCount, { label: u.labels[i], n })), `${u.reflectionLabel}${state.reflection ? u.yesShort : u.noShort}`, u.footerLine, url.protocol.startsWith('http') ? url.href : 'https://liuchenhsiung.github.io/uwaki-sheet/'].join('\n');
+    return [u.shareText, `【${type.name}】`, ...C.counts(state).map((n, i) => format(u.shareCount, { label: u.labels[i], n })), `${u.reflectionLabel}${state.reflection ? u.yesShort : u.noShort}`, u.footerLine, url.protocol.startsWith('https') ? 'https://liuchenhsiung.github.io/uwaki-sheet/' : url.href].join('\n');
   }
   async function copyResult() {
     const textarea = document.getElementById('result-text');
